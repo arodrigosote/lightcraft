@@ -662,7 +662,7 @@ pub fn model_dialog(app: &mut LightcraftApp, ui: &mut egui::Ui, t: &Tokens, info
         ui.add(
             egui::Label::new(
                 RichText::new(tr_format!(
-                    "Downloads from {host}. Once it has arrived and checked out, ICASYS Revelado installs it, {after}.",
+                    "Downloads from {host}. Once it has arrived and checked out, LightCraft installs it, {after}.",
                     host = host,
                     after = tr(after)
                 ))
