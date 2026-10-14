@@ -556,7 +556,7 @@ fn services(cc: &eframe::CreationContext<'_>, log_file: Option<&std::path::Path>
         save_preset_file: Some(Box::new(|name: &str| {
             file_dialog()
                 .set_title(lightcraft_ui_egui::i18n::tr("Export Presets"))
-                .add_filter_nocase(lightcraft_ui_egui::i18n::tr("LightCraft Preset"), &["lcpreset"])
+                .add_filter_nocase(lightcraft_ui_egui::i18n::tr("ICASYS Revelado Preset"), &["lcpreset"])
                 .set_file_name(name)
                 .save_file()
                 .map(|p| p.to_string_lossy().to_string())

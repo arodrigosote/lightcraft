@@ -1,0 +1,8 @@
+{
+  "app": "lightcraft",
+  "name": "ICASYS Revelado",
+  "slug": "revelado",
+  "upstream_name": "LightCraft",
+  "upstream_base": "b3d392b4994ee99dc389890f006600769d0c4ff5",
+  "owner": "arodrigosote"
+}
