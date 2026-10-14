@@ -52,7 +52,7 @@ pub fn preview_only_explanation(reason: &str) -> String {
         .to_string();
     }
     crate::i18n::tr_format!(
-        "LightCraft can't decode this raw variant yet ({}). You're editing the camera's embedded JPEG preview, which already includes the camera's picture style (e.g. Monochrome) and white balance.",
+        "ICASYS Revelado can't decode this raw variant yet ({}). You're editing the camera's embedded JPEG preview, which already includes the camera's picture style (e.g. Monochrome) and white balance.",
         preview_only_variant(reason)
     )
 }
