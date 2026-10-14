@@ -206,8 +206,8 @@ include!(concat!(env!("OUT_DIR"), "/tr-formats.rs"));
 /// (issue #260), in the UI language: the error and, when there is one, the log file to look in.
 pub fn startup_failed_message(error: &str, log_file: Option<&str>) -> (String, String) {
     let text = match log_file {
-        Some(path) => tr_format!("ICASYS Revelado could not open its window: {e}\n\nThe log file has the details: {path}", e = error, path = path),
-        None => tr_format!("ICASYS Revelado could not open its window: {e}", e = error),
+        Some(path) => tr_format!("LightCraft could not open its window: {e}\n\nThe log file has the details: {path}", e = error, path = path),
+        None => tr_format!("LightCraft could not open its window: {e}", e = error),
     };
     (tr("ICASYS Revelado could not start").to_string(), text)
 }
