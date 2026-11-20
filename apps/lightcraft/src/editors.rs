@@ -185,9 +185,9 @@ fn windows_candidates(install_dir: Option<String>, app_path: Option<String>, env
     out.extend(install_dir.map(|d| Path::new(&d).join("photocraft.exe")));
     out.extend(app_path.map(|p| PathBuf::from(p.trim_matches('"'))));
     for var in ["ProgramW6432", "ProgramFiles"] {
-        out.extend(env(var).map(|d| Path::new(&d).join("PhotoCraft").join("photocraft.exe")));
+        out.extend(env(var).map(|d| Path::new(&d).join("ICASYS Foto").join("photocraft.exe")));
     }
-    out.extend(env("LOCALAPPDATA").map(|d| Path::new(&d).join("Programs").join("PhotoCraft").join("photocraft.exe")));
+    out.extend(env("LOCALAPPDATA").map(|d| Path::new(&d).join("Programs").join("ICASYS Foto").join("photocraft.exe")));
     out
 }
 

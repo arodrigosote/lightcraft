@@ -1052,7 +1052,7 @@ fn try_again_on_a_missing_remembered_library_makes_nothing_in_an_empty_folder() 
     assert_eq!(std::fs::read_dir(&mount).unwrap().count(), 0, "nothing is written there");
     assert!(h.app.session.library.is_none());
     let p = h.app.library_problem.as_ref().expect("the window stays");
-    assert_eq!(p.error, "There is no LightCraft library in this folder any more.");
+    assert_eq!(p.error, "There is no ICASYS Revelado library in this folder any more.");
     assert!(has(&h, "button:libraryRetry"));
     // the share is connected again: Try Again opens the library in it
     make_library(&mount);

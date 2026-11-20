@@ -442,7 +442,7 @@ impl LightcraftApp {
                 let t = self.tick_now();
                 self.ui.toast = Some((
                     crate::i18n::tr_format!(
-                        "{n} change{} saved in memory but not written to disk: {e} — LightCraft will retry",
+                        "{n} change{} saved in memory but not written to disk: {e} — ICASYS Revelado will retry",
                         if n == 1 { "" } else { "s" },
                         n = n,
                         e = e

@@ -185,7 +185,7 @@ impl LightcraftApp {
                 self.toast_for(
                     ctx,
                     crate::i18n::tr_format!(
-                        "The XMP sidecars of {n} photos couldn't be written (is their folder offline?). LightCraft keeps trying.",
+                        "The XMP sidecars of {n} photos couldn't be written (is their folder offline?). ICASYS Revelado keeps trying.",
                         n = waiting
                     ),
                     8.0,
@@ -344,22 +344,22 @@ impl LightcraftApp {
         ctx.send_viewport_cmd(egui::ViewportCommand::Title(self.window_title()));
     }
 
-    /// "LightCraft — <library name>" (just "LightCraft" for a library that isn't saved).
+    /// "ICASYS Revelado — <library name>" (just "ICASYS Revelado" for a library that isn't saved).
     pub fn window_title(&self) -> String {
         match panels::settings::open_library_name(self) {
-            Some(name) => format!("LightCraft — {name}"),
-            None => "LightCraft".to_string(),
+            Some(name) => format!("ICASYS Revelado — {name}"),
+            None => "ICASYS Revelado".to_string(),
         }
     }
 
-    /// The browser page's title: "<file name>[ •] — LightCraft" for the active photo (• while
+    /// The browser page's title: "<file name>[ •] — ICASYS Revelado" for the active photo (• while
     /// `unsaved`: changes not yet written to storage), else the window title. The web build has no
     /// window for `ViewportCommand::Title`; a host embedding it reads this title to tell which
     /// document a drop opened and whether it is saved (issue #2397).
     pub fn page_title(&self, unsaved: bool) -> String {
         let dot = if unsaved { " •" } else { "" };
         match self.session.active().and_then(|id| self.session.catalog.photo(id)) {
-            Some(p) => format!("{}{dot} — LightCraft", p.file_name),
+            Some(p) => format!("{}{dot} — ICASYS Revelado", p.file_name),
             None => format!("{}{dot}", self.window_title()),
         }
     }
