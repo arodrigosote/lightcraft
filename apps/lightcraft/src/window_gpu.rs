@@ -140,7 +140,7 @@ fn user_notice(failed: Option<WindowRenderer>, forced: Option<WindowRenderer>, p
             "{n} {app} now draws its window with {}. To choose another, start {app} with {var}=dx12, vulkan, gl or glow \
              (see docs/gpu-pipeline.md → Troubleshooting).",
             which.name(),
-            app = "LightCraft",
+            app = "ICASYS Revelado",
             var = "LIGHTCRAFT_GPU_BACKEND",
         )
     })
@@ -273,7 +273,7 @@ pub fn relaunch_after_failure(files: &Files) -> bool {
 }
 
 /// Only DX12 windows use the compositor; fallback renderers retain their normal presentation.
-/// Adapted from kmnkv1's PhotoCraft PR: https://github.com/storytold/photocraft/pull/7035.
+/// Adapted from kmnkv1's PhotoCraft PR: https://github.com/arodrigosote/photocraft/pull/7035.
 pub fn composes_window(enabled: bool, renderer: WindowRenderer) -> bool {
     cfg!(target_os = "windows") && enabled && renderer == WindowRenderer::Wgpu(Backends::DX12)
 }

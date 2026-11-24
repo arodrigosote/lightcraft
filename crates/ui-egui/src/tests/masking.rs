@@ -1297,13 +1297,13 @@ fn edit_in_external_editor_opens_the_copy() {
     };
     let app = LightcraftApp::new(lightcraft_engine::Session::with_demo().with_fs(), services);
     let mut h = Headless::new(app, [1200.0, 800.0], 1.0);
-    h.app.ui.settings.external_editor = "PhotoCraft".into();
+    h.app.ui.settings.external_editor = "ICASYS Foto".into();
     let r = h.request("engine.execute", json!({"command": "photo.editInExternal", "params": {"dir": dir.to_string_lossy()}}), T);
     assert_eq!(r["ok"], true, "{r}");
     let calls = opened.lock().unwrap().clone();
     assert_eq!(calls.len(), 1);
     assert!(calls[0].0.ends_with("-Edit.tif") && std::path::Path::new(&calls[0].0).exists(), "{calls:?}");
-    assert_eq!(calls[0].1, "PhotoCraft");
+    assert_eq!(calls[0].1, "ICASYS Foto");
     let _ = std::fs::remove_dir_all(&dir);
     h.settle(SETTLE);
 }
@@ -1319,7 +1319,7 @@ fn edit_in_reports_an_editor_that_wont_open_without_failing() {
     let services = Services { png: None, open_with: Some(Box::new(|_: &str, _: &str| Err("the editor quit".into()))), ..Default::default() };
     let app = LightcraftApp::new(lightcraft_engine::Session::with_demo().with_fs(), services);
     let mut h = Headless::new(app, [1200.0, 800.0], 1.0);
-    h.app.ui.settings.external_editor = "PhotoCraft".into();
+    h.app.ui.settings.external_editor = "ICASYS Foto".into();
     let n = h.app.session.catalog.len();
     let r = h.request("engine.execute", json!({"command": "photo.editInExternal", "params": {"dir": dir.to_string_lossy()}}), T);
     assert_eq!(r["ok"], true, "{r}");
@@ -1331,7 +1331,7 @@ fn edit_in_reports_an_editor_that_wont_open_without_failing() {
     h.settle(SETTLE);
 }
 
-/// Edit in PhotoCraft: a PSD copy (what PhotoCraft saves back to), handed to "PhotoCraft" for
+/// Edit in PhotoCraft: a PSD copy (what PhotoCraft saves back to), handed to "ICASYS Foto" for
 /// the host to find; when the host can't find it, no copy is made.
 #[test]
 fn edit_in_photocraft_opens_a_psd_copy() {
@@ -1375,7 +1375,7 @@ fn edit_in_photocraft_opens_a_psd_copy() {
     let calls = opened.lock().unwrap().clone();
     assert_eq!(calls.len(), 1);
     assert!(calls[0].0.ends_with("-Edit.psd") && std::path::Path::new(&calls[0].0).exists(), "{calls:?}");
-    assert_eq!(calls[0].1, "PhotoCraft");
+    assert_eq!(calls[0].1, "ICASYS Foto");
     let d = lightcraft_codecs::decode(&std::fs::read(&calls[0].0).unwrap(), Default::default()).unwrap();
     assert_eq!(d.bit_depth, 16, "16-bit by default");
     // a portable copy: its path is what the host is given; the file follows the settings

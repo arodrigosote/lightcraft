@@ -66,7 +66,7 @@ pub(crate) const WELCOME_START: &str = "Get Started";
 /// not bind.
 pub(crate) const WELCOME_PAGES: [(&str, &str, &str); 6] = [
     (
-        "Welcome to LightCraft",
+        "Welcome to ICASYS Revelado",
         "A fast, non-destructive photo library and raw developer: your originals stay untouched, and every edit can be revisited or reset.",
         "Bring photos in with File › Import Photos…",
     ),
@@ -92,7 +92,7 @@ pub(crate) const WELCOME_PAGES: [(&str, &str, &str); 6] = [
     ),
     (
         "Put agents to work",
-        "Everything in LightCraft is a command, so AI agents can drive the running app over MCP: culling, editing, exporting on your word.",
+        "Everything in ICASYS Revelado is a command, so AI agents can drive the running app over MCP: culling, editing, exporting on your word.",
         "Start the app with --control 7980 (or LIGHTCRAFT_CONTROL_PORT), then lightcraft-cli mcp --connect attaches one to it.",
     ),
 ];
@@ -488,7 +488,7 @@ fn dialog_title(app: &LightcraftApp, dlg: &Dialog) -> String {
         // (nothing to download from in this build: the dialog explains the manual install)
         Dialog::SamModel { .. } if sam_by_hand(&app.session.segmenter) => "Install the SAM 3 Model",
         Dialog::SamModel { .. } => "Download the SAM 3 Model?",
-        Dialog::About => "About LightCraft",
+        Dialog::About => "About ICASYS Revelado",
         Dialog::Shortcuts => "Keyboard Shortcuts",
         Dialog::ViewOptions => "View Options",
     }
@@ -1787,7 +1787,7 @@ fn export_apple_photos_rows(ui: &mut egui::Ui, t: &Tokens, opts: &mut ExportOpti
             )
         });
         ui.label(
-            egui::RichText::new(crate::i18n::tr("The first time, macOS asks whether LightCraft may control Photos.")).size(11.0).color(t.text_dim),
+            egui::RichText::new(crate::i18n::tr("The first time, macOS asks whether ICASYS Revelado may control Photos.")).size(11.0).color(t.text_dim),
         );
     }
 }
@@ -1993,7 +1993,7 @@ fn move_photos_body(ui: &mut egui::Ui, t: &Tokens, dlg: &mut Dialog) {
 /// The body of the LightroomCatalog dialog.
 fn lightroom_catalog_body(app: &mut LightcraftApp, ui: &mut egui::Ui, t: &Tokens, dlg: &mut Dialog) {
     let Dialog::LightroomCatalog { folder, catalog } = dlg else { return };
-    ui.label(crate::i18n::tr("This is a Lightroom catalog, not a LightCraft library. Import it into a LightCraft library instead?"));
+    ui.label(crate::i18n::tr("This is a Lightroom catalog, not an ICASYS Revelado library. Import it into an ICASYS Revelado library instead?"));
     ui.label(egui::RichText::new(catalog.as_deref().unwrap_or(folder.as_str())).color(t.text_dim));
     // (the import then asks where the catalog goes, unless Settings says to merge, #2672)
     let asks = app.ui.settings.lightroom_import == crate::state::LightroomImport::Ask && app.session.library.as_ref().is_some_and(|l| l.on_disk);
@@ -2042,14 +2042,14 @@ fn about_body(app: &mut LightcraftApp, ui: &mut egui::Ui, t: &Tokens, dlg: &mut 
         1 => crate::credits::contributors_ui(app, ui),
         2 => crate::credits::models_ui(ui),
         _ => {
-            ui.label(egui::RichText::new("LightCraft").font(t.semibold(20.0)).color(t.text));
+            ui.label(egui::RichText::new("ICASYS Revelado").font(t.semibold(20.0)).color(t.text));
             ui.label(crate::i18n::tr_format!("Version {} — a clean-room, pure-Rust photo library and raw developer.", env!("CARGO_PKG_VERSION")));
             ui.label(crate::i18n::tr_format!(
                 "MIT OR Apache-2.0. Fonts: {} (OFL). Icons: original.",
                 crate::theme::font_credits(app.chinese_font.is_some())
             ));
             ui.add_space(10.0);
-            let r = crate::button::Button::new("Join the ArtCraft Discord")
+            let r = crate::button::Button::new("ICASYS Community")
                 .primary()
                 .large()
                 .min_width(260.0)
@@ -2061,9 +2061,9 @@ fn about_body(app: &mut LightcraftApp, ui: &mut egui::Ui, t: &Tokens, dlg: &mut 
             }
             ui.add_space(6.0);
             for (label, url) in [
-                ("LightCraft website", crate::links::APP_PAGE),
+                ("ICASYS Revelado website", crate::links::APP_PAGE),
                 ("Source code on GitHub", crate::links::GITHUB),
-                ("ArtCraft — more creative apps", crate::links::WEBSITE),
+                ("ICASYS — software for learning", crate::links::WEBSITE),
             ] {
                 let r = ui.link(crate::i18n::tr(label)).on_hover_text(url);
                 if r.clicked() {

@@ -239,7 +239,7 @@ impl PrefsWriter {
             Err(e) => {
                 if !self.failing {
                     log::warn!("{e}");
-                    app.notices.push(format!("{e}. LightCraft keeps trying."));
+                    app.notices.push(format!("{e}. ICASYS Revelado keeps trying."));
                 }
                 self.failing = true;
                 // don't retry every frame

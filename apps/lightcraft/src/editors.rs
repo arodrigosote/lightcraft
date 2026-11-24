@@ -120,7 +120,7 @@ fn launcher(app: &str) -> Result<Launcher, String> {
         return Ok(if cfg!(target_os = "macos") { Launcher::MacApp(app.to_string()) } else { Launcher::Program(PathBuf::from(app)) });
     }
     find_photocraft().ok_or_else(|| {
-        "PhotoCraft isn't installed. Get it from getartcraft.com/apps/photocraft, or give where it is in Settings ▸ External Editing.".to_string()
+        "ICASYS Foto isn't installed. Get it from icasys.mx, or give where it is in Settings ▸ External Editing.".to_string()
     })
 }
 
@@ -131,7 +131,7 @@ fn find_photocraft() -> Option<Launcher> {
         let home = env("HOME").map(|h| Path::new(&h).join("Applications/PhotoCraft.app"));
         let usual = [Some(PathBuf::from("/Applications/PhotoCraft.app")), home].into_iter().flatten().find(|p| p.is_dir());
         let spotlight = || {
-            let query = format!("kMDItemCFBundleIdentifier == '{PHOTOCRAFT_ID}' || kMDItemFSName == 'PhotoCraft.app'");
+            let query = format!("kMDItemCFBundleIdentifier == '{PHOTOCRAFT_ID}' || kMDItemFSName == 'ICASYS Foto.app'");
             let out = Command::new("mdfind").arg(query).output().ok().filter(|o| o.status.success())?;
             mdfind_app(&String::from_utf8_lossy(&out.stdout))
         };
@@ -185,9 +185,9 @@ fn windows_candidates(install_dir: Option<String>, app_path: Option<String>, env
     out.extend(install_dir.map(|d| Path::new(&d).join("photocraft.exe")));
     out.extend(app_path.map(|p| PathBuf::from(p.trim_matches('"'))));
     for var in ["ProgramW6432", "ProgramFiles"] {
-        out.extend(env(var).map(|d| Path::new(&d).join("PhotoCraft").join("photocraft.exe")));
+        out.extend(env(var).map(|d| Path::new(&d).join("ICASYS Foto").join("photocraft.exe")));
     }
-    out.extend(env("LOCALAPPDATA").map(|d| Path::new(&d).join("Programs").join("PhotoCraft").join("photocraft.exe")));
+    out.extend(env("LOCALAPPDATA").map(|d| Path::new(&d).join("Programs").join("ICASYS Foto").join("photocraft.exe")));
     out
 }
 
